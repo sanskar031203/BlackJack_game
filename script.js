@@ -11,7 +11,7 @@ let player_h=document.querySelector("#chips")
 
 let player={
   name:"YourName",
-  chips:145
+  chips:500
 }
 update()
 function update(){
@@ -25,7 +25,7 @@ function start(){
       cards.pop()
     message_h.textContent="Do you want to draw a new card?"
     sum=0;
-    player.chips-=30
+    player.chips-=125
     update()
     isAlive=true
     cards.push(drawNewCard())
@@ -65,9 +65,14 @@ function new_card(){
   }
 }
 function cash_out(){
-  if(hasBlackJack==true){
-    hasBlackJack=false;
-    player.chips=player.chips+sum*10
+  if(hasBlackJack){
+    hasBlackJack=false
+    player.chips=player.chips+sum*10;
+    update()
+  }
+  if(isAlive==true){
+    isAlive=false;
+    player.chips=player.chips+sum*5;
     update()
   }
 }
